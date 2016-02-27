@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,14 +33,41 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         final TextView firstTextView = (TextView) findViewById(R.id.textView);
-        Button firstButton = (Button) findViewById(R.id.firstButton);
+        final Button firstButton = (Button) findViewById(R.id.firstButton);
+        final Switch musicSwitch = (Switch) findViewById(R.id.switch1);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.sound);
 
         firstButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firstTextView.setText("why is it??");
-                mp.start();
+                if (firstTextView.getText() == "Music Coolness") {
+                    firstTextView.setText("Hello World!");
+                } else {
+                    firstTextView.setText("Music Coolness");
+                }
+            }
+        });
+
+        musicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mp.start();
+                    musicSwitch.setText("Pause");
+                } else {
+                    mp.pause();
+                    musicSwitch.setText("Play");
+                }
+            }
+        });
+
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                musicSwitch.setText("Play");
+                musicSwitch.toggle();
             }
         });
     }

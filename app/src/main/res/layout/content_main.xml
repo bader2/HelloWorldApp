@@ -29,5 +29,16 @@
         android:id="@+id/firstButton"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="122dp" />
+        android:layout_marginTop="56dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/switch1"
+        android:layout_marginTop="54dp"
+        android:checked="false"
+        android:layout_below="@+id/firstButton"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
