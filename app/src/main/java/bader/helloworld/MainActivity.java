@@ -1,5 +1,6 @@
 package bader.helloworld;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView firstTextView = (TextView) findViewById(R.id.textView);
         Button firstButton = (Button) findViewById(R.id.firstButton);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.sound);
 
         firstButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 firstTextView.setText("why is it??");
+                mp.start();
             }
         });
     }
